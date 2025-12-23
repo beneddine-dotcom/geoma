@@ -1,0 +1,1216 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conferencia Internacional: Taller de Educación Digital en Matemáticas</title>
+    <style>
+        :root {
+            --primary-color: #1a5276;
+            --secondary-color: #2980b9;
+            --accent-color: #e74c3c;
+            --light-color: #f8f9fa;
+            --dark-color: #2c3e50;
+            --success-color: #27ae60;
+            --text-dark: #2c3e50;
+            --text-light: #ffffff;
+            --gold-color: #FFD700;
+            --highlight-color: #f39c12;
+            --meet-green: #0F9D58;
+            --algeria-green: #006233;
+            --el-salvador-blue: #0066CC;
+            --language-active: #27ae60;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, 'Arial', sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background: 
+                radial-gradient(circle at 20% 30%, rgba(255, 255, 255, 0.3) 2px, transparent 0),
+                radial-gradient(circle at 80% 70%, rgba(255, 255, 255, 0.3) 2px, transparent 0),
+                radial-gradient(circle at 40% 90%, rgba(255, 255, 255, 0.3) 2px, transparent 0),
+                radial-gradient(circle at 60% 10%, rgba(255, 255, 255, 0.3) 2px, transparent 0),
+                radial-gradient(circle at 10% 50%, rgba(255, 255, 255, 0.3) 2px, transparent 0),
+                linear-gradient(135deg, #3498db 0%, #1a5276 100%);
+            background-size: 300px 300px, 400px 400px, 500px 500px, 600px 600px, 700px 700px, 100% 100%;
+        }
+
+        /* Language Switcher */
+        .language-switcher {
+            position: fixed;
+            top: 80px;
+            right: 20px;
+            z-index: 1001;
+            background: white;
+            border-radius: 20px;
+            padding: 5px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+            display: flex;
+            gap: 5px;
+        }
+
+        .lang-btn {
+            padding: 8px 15px;
+            border: none;
+            background: transparent;
+            cursor: pointer;
+            border-radius: 15px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+
+        .lang-btn.active {
+            background: var(--language-active);
+            color: white;
+        }
+
+        .lang-btn:hover:not(.active) {
+            background: var(--light-color);
+        }
+
+        /* Arabic Direction */
+        [lang="ar"] {
+            direction: rtl;
+            text-align: right;
+        }
+
+        [lang="es"] {
+            direction: ltr;
+            text-align: left;
+        }
+
+        /* Hide non-active language content */
+        .content-ar,
+        .content-es {
+            display: none;
+        }
+
+        .content-ar.active,
+        .content-es.active {
+            display: block;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header Styles */
+        header {
+            background: var(--primary-color);
+            color: var(--text-light);
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--text-light);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 1.5rem;
+        }
+
+        .nav-links a {
+            color: var(--text-light);
+            text-decoration: none;
+            transition: color 0.3s;
+            padding: 5px 10px;
+            border-radius: 3px;
+        }
+
+        .nav-links a:hover {
+            background: rgba(255,255,255,0.1);
+            color: var(--text-light);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url('https://images.unsplash.com/photo-1509228468518-180dd4864904?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            background-position: center;
+            color: var(--text-light);
+            text-align: center;
+            padding: 150px 0 100px;
+            margin-top: 70px;
+        }
+
+        .hero h1 {
+            font-size: 2.8rem;
+            margin-bottom: 1rem;
+            animation: fadeInUp 1s ease;
+            background: linear-gradient(45deg, #3498db, #e74c3c, #27ae60);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .hero h2 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            color: var(--gold-color);
+            font-weight: normal;
+        }
+
+        .hero h3 {
+            font-size: 1.4rem;
+            margin-bottom: 2rem;
+            color: #00ffaa;
+            font-weight: normal;
+        }
+
+        .conference-info {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin: 2rem 0;
+            flex-wrap: wrap;
+        }
+
+        .country-flag {
+            display: inline-block;
+            font-size: 1.5rem;
+            margin: 0 5px;
+        }
+
+        .btn {
+            display: inline-block;
+            background: var(--secondary-color);
+            color: var(--text-light);
+            padding: 12px 30px;
+            border: none;
+            border-radius: 5px;
+            text-decoration: none;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            margin: 0.5rem;
+        }
+
+        .btn:hover {
+            background: #1a5276;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .meet-btn {
+            display: inline-block;
+            background: var(--meet-green);
+            color: var(--text-light);
+            padding: 15px 35px;
+            border: none;
+            border-radius: 8px;
+            text-decoration: none;
+            font-size: 1.2rem;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            margin: 0.5rem;
+            box-shadow: 0 4px 12px rgba(15, 157, 88, 0.3);
+        }
+
+        .meet-btn:hover {
+            background: #0d8046;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(15, 157, 88, 0.4);
+        }
+
+        /* Sections */
+        section {
+            padding: 80px 0;
+            background: white;
+        }
+
+        section:nth-child(even) {
+            background: var(--light-color);
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            color: var(--primary-color);
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .section-title p {
+            font-size: 1.1rem;
+            color: var(--text-dark);
+        }
+
+        /* Cards */
+        .cards-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .card {
+            background: white;
+            border-radius: 10px;
+            padding: 2rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+            text-align: center;
+            border: 1px solid #e9ecef;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        }
+
+        .card-icon {
+            font-size: 3rem;
+            color: var(--secondary-color);
+            margin-bottom: 1rem;
+        }
+
+        .card h3 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .card p {
+            color: var(--text-dark);
+        }
+
+        /* Professor Cards */
+        .professor-card {
+            background: white;
+            border-radius: 10px;
+            padding: 2rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+
+        .professor-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        }
+
+        .professor-img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin: 0 auto 1rem;
+            border: 5px solid var(--secondary-color);
+        }
+
+        .professor-name {
+            color: var(--primary-color);
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .professor-country {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            color: var(--text-dark);
+            margin-bottom: 1rem;
+        }
+
+        /* Installation Section */
+        .installation-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .install-card {
+            background: white;
+            border-radius: 10px;
+            padding: 1.5rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+
+        .install-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        }
+
+        .install-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .install-icon {
+            font-size: 2rem;
+            color: var(--secondary-color);
+        }
+
+        .install-links {
+            margin-top: 1rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .install-link {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--secondary-color);
+            text-decoration: none;
+            padding: 0.5rem;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+
+        .install-link:hover {
+            background: var(--light-color);
+            color: var(--primary-color);
+        }
+
+        /* Video Gallery */
+        .video-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .video-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+
+        .video-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        }
+
+        .video-thumbnail {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .video-info {
+            padding: 1.5rem;
+        }
+
+        .video-title {
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .video-description {
+            color: var(--text-dark);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Book Gallery */
+        .book-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .book-card {
+            background: white;
+            border-radius: 10px;
+            padding: 1.5rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+
+        .book-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        }
+
+        .book-cover {
+            width: 150px;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 5px;
+            margin-bottom: 1rem;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+        }
+
+        /* Contact Methods */
+        .contact-methods {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+            text-align: center;
+        }
+
+        .contact-method {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            border: 1px solid #e9ecef;
+        }
+
+        .contact-method h3 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .contact-method a {
+            color: var(--secondary-color);
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+
+        .contact-method a:hover {
+            color: var(--primary-color);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark-color);
+            color: var(--text-light);
+            text-align: center;
+            padding: 2rem 0;
+        }
+
+        footer a {
+            color: var(--text-light);
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero h2 {
+                font-size: 1.4rem;
+            }
+
+            .hero h3 {
+                font-size: 1.2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .conference-info {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .section-title h2 {
+                font-size: 2rem;
+            }
+
+            .contact-methods {
+                grid-template-columns: 1fr;
+            }
+
+            .language-switcher {
+                top: 70px;
+                right: 10px;
+            }
+        }
+
+        /* Custom styles */
+        .distance-badge {
+            background: linear-gradient(45deg, var(--algeria-green), var(--el-salvador-blue));
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-weight: bold;
+            display: inline-block;
+            margin: 1rem 0;
+        }
+
+        .language-badge {
+            background: var(--gold-color);
+            color: var(--text-dark);
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            display: inline-block;
+            margin-left: 0.5rem;
+        }
+
+        .tool-logo {
+            width: 100px;
+            height: 100px;
+            object-fit: contain;
+            margin-bottom: 1rem;
+        }
+
+        .tools-highlight {
+            color: #e74c3c;
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+    </style>
+</head>
+<body>
+    <!-- Language Switcher -->
+    <div class="language-switcher">
+        <button class="lang-btn active" data-lang="ar">العربية</button>
+        <button class="lang-btn" data-lang="es">Español</button>
+    </div>
+
+    <!-- Header -->
+    <header>
+        <div class="container nav-container">
+            <div class="logo content-ar active">المؤتمر الدولي: ورشة عمل التعليم الرقمي في الرياضيات</div>
+            <div class="logo content-es">Conferencia Internacional: Taller de Educación Digital en Matemáticas</div>
+            <nav>
+                <ul class="nav-links">
+                    <!-- Arabic Navigation -->
+                    <li class="content-ar active"><a href="#professors">المحاضرون</a></li>
+                    <li class="content-ar active"><a href="#conference">المؤتمر</a></li>
+                    <li class="content-ar active"><a href="#installation">التثبيت</a></li>
+                    <li class="content-ar active"><a href="#videos">الفيديوهات</a></li>
+                    <li class="content-ar active"><a href="#books">الكتب</a></li>
+                    <li class="content-ar active"><a href="#contact">التواصل</a></li>
+                    
+                    <!-- Spanish Navigation -->
+                    <li class="content-es"><a href="#professors">Ponentes</a></li>
+                    <li class="content-es"><a href="#conference">Conferencia</a></li>
+                    <li class="content-es"><a href="#installation">Instalación</a></li>
+                    <li class="content-es"><a href="#videos">Videos</a></li>
+                    <li class="content-es"><a href="#books">Libros</a></li>
+                    <li class="content-es"><a href="#contact">Contacto</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <!-- Arabic Hero Content -->
+            <div class="content-ar active">
+                <h1>مؤتمر دولي: ورشة عمل حول التعليم الرقمي في الرياضيات</h1>
+                <h2>الإبداع المرئي والتكنولوجيا التعليمية</h2>
+                <h3><span class="tools-highlight">جيوجيبرا</span> و <span class="tools-highlight">مانيم في بايثون</span> للإبداع البصري في الرياضيات</h3>
+                
+                <p>بدعوة من <strong>الأستاذ إدواردو أنطونيو غوميز مارتينيز</strong> من السلفادور 🇸🇻</p>
+                <p>و<strong>الأستاذ بن الدين بويعقوب</strong> من الجزائر 🇩🇿</p>
+                
+                <div class="conference-info">
+                    <div class="distance-badge">المسافة بين البلدين: 7,027 كم</div>
+                    <div>📅 <strong>تاريخ المؤتمر:</strong> الأربعاء القادم</div>
+                    <div>⏰ <strong>الوقت:</strong> 20:00 (توقيت الجزائر) / 14:00 (توقيت السلفادور)</div>
+                </div>
+            </div>
+            
+            <!-- Spanish Hero Content -->
+            <div class="content-es">
+                <h1>Conferencia Internacional: Taller de Educación Digital en Matemáticas</h1>
+                <h2>Creatividad Visual y Tecnología Educativa</h2>
+                <h3><span class="tools-highlight">GeoGebra</span> y <span class="tools-highlight">Manim en Python</span> para la Creatividad Visual en Matemáticas</h3>
+                
+                <p>Invitación del <strong>Prof. Eduardo Antonio Gómez Martínez</strong> de El Salvador 🇸🇻</p>
+                <p>y el <strong>Prof. Beneddine Bouyakoub</strong> de Argelia 🇩🇿</p>
+                
+                <div class="conference-info">
+                    <div class="distance-badge">Distancia entre países: 7,027 km</div>
+                    <div>📅 <strong>Fecha:</strong> Próximo miércoles</div>
+                    <div>⏰ <strong>Hora:</strong> 20:00 (Argelia) / 14:00 (El Salvador)</div>
+                </div>
+            </div>
+            
+            <!-- Google Meet Button -->
+            <a href="https://meet.google.com/uvb-updz-anc" class="meet-btn" target="_blank">
+                <span class="content-ar active">🎥 انضم إلى المؤتمر عبر Google Meet</span>
+                <span class="content-es">🎥 Únete a la Conferencia por Google Meet</span>
+            </a>
+        </div>
+    </section>
+
+    <!-- Professors Section -->
+    <section id="professors">
+        <div class="container">
+            <div class="section-title">
+                <h2 class="content-ar active">المحاضرون الدوليون</h2>
+                <h2 class="content-es">Ponentes Internacionales</h2>
+                <p class="content-ar active">خبراء في الرياضيات الرقمية من بلدين</p>
+                <p class="content-es">Expertos en Matemática Digital de dos países</p>
+            </div>
+            
+            <div class="cards-container">
+                <!-- Algeria Professor -->
+                <div class="professor-card fade-in">
+                    <div class="professor-country">
+                        <span class="country-flag">🇩🇿</span>
+                        <span class="content-ar active">الجزائر</span>
+                        <span class="content-es">Argelia</span>
+                    </div>
+                    <h3 class="professor-name">
+                        <span class="content-ar active">الأستاذ بن الدين بويعقوب</span>
+                        <span class="content-es">Prof. Beneddine Bouyakoub</span>
+                    </h3>
+                    <p class="content-ar active"><strong>التخصص:</strong> الرياضيات الرقمية والتعليم التكنولوجي</p>
+                    <p class="content-es"><strong>Especialidad:</strong> Matemática Digital y Educación Tecnológica</p>
+                    <p class="content-ar active"><strong>المؤهلات:</strong> مؤلف كتاب "الإنشاء بالجيوجيبرا" وكتاب "لغة الرياضيات المتحركة"</p>
+                    <p class="content-es"><strong>Calificaciones:</strong> Autor del libro "Construcción con GeoGebra" y "Lenguaje de Matemáticas Animadas"</p>
+                </div>
+                
+                <!-- El Salvador Professor -->
+                <div class="professor-card fade-in">
+                    <div class="professor-country">
+                        <span class="country-flag">🇸🇻</span>
+                        <span class="content-ar active">السلفادور</span>
+                        <span class="content-es">El Salvador</span>
+                    </div>
+                    <h3 class="professor-name">
+                        <span class="content-ar active">الأستاذ إدواردو أنطونيو غوميز مارتينيز</span>
+                        <span class="content-es">Prof. Eduardo Antonio Gómez Martínez</span>
+                    </h3>
+                    <p class="content-ar active"><strong>التخصص:</strong> الرياضيات التطبيقية والتعليم الرقمي</p>
+                    <p class="content-es"><strong>Especialidad:</strong> Matemática Aplicada y Educación Digital</p>
+                    <p class="content-ar active"><strong>:</strong> </p>
+                    <p class="content-es"><strong>Experiencia:</strong> </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Conference Details -->
+    <section id="conference" style="background: var(--light-color);">
+        <div class="container">
+            <div class="section-title">
+                <h2 class="content-ar active">تفاصيل المؤتمر</h2>
+                <h2 class="content-es">Detalles de la Conferencia</h2>
+                <p class="content-ar active">ورشة عمل دولية في التعليم الرقمي</p>
+                <p class="content-es">Taller internacional de educación digital</p>
+            </div>
+            
+            <div class="cards-container">
+                <!-- Goals -->
+                <div class="card fade-in">
+                    <div class="card-icon">🎯</div>
+                    <h3 class="content-ar active">أهداف المؤتمر</h3>
+                    <h3 class="content-es">Objetivos</h3>
+                    <ul class="content-ar active" style="text-align: right; margin-top: 1rem; color: var(--text-dark);">
+                        <li>تعريف المعلمين بأدوات التعليم الرقمي الحديثة</li>
+                        <li>تدريب عملي على استخدام جيوجيبرا ومانيم</li>
+                        <li>تبادل الخبرات بين معلمي الجزائر والسلفادور</li>
+                        <li></li>
+                    </ul>
+                    <ul class="content-es" style="text-align: left; margin-top: 1rem; color: var(--text-dark);">
+                        <li>Introducir herramientas digitales modernas a los docentes</li>
+                        <li>Entrenamiento práctico en GeoGebra y Manim</li>
+                        <li>Intercambio de experiencias entre docentes de Argelia y El Salvador</li>
+                        <li></li>
+                    </ul>
+                </div>
+                
+                <!-- Topics -->
+                <div class="card fade-in">
+                    <div class="card-icon">📋</div>
+                    <h3 class="content-ar active">محاور المؤتمر</h3>
+                    <h3 class="content-es">Temas</h3>
+                    <ul class="content-ar active" style="text-align: right; margin-top: 1rem; color: var(--text-dark);">
+                        <li>الجيوجيبرا المتقدم للتعليم التفاعلي</li>
+                        <li>مانيم (Python) للرسوم المتحركة الرياضية</li>
+                        <li>استراتيجيات التكامل التكنولوجي في الفصل</li>
+                        <li>أدوات الذكاء الاصطناعي في التعليم</li>
+                    </ul>
+                    <ul class="content-es" style="text-align: left; margin-top: 1rem; color: var(--text-dark);">
+                        <li>GeoGebra avanzado para educación interactiva</li>
+                        <li>Manim (Python) para animaciones matemáticas</li>
+                        <li>Estrategias de integración tecnológica en el aula</li>
+                        <li>Herramientas de IA en educación</li>
+                    </ul>
+                </div>
+                
+                <!-- Target Audience -->
+                <div class="card fade-in">
+                    <div class="card-icon">👥</div>
+                    <h3 class="content-ar active">الفئة المستهدفة</h3>
+                    <h3 class="content-es">Audiencia</h3>
+                    <ul class="content-ar active" style="text-align: right; margin-top: 1rem; color: var(--text-dark);">
+                        <li>معلمو الرياضيات في جميع المراحل</li>
+                        <li>مدربو التكنولوجيا التعليمية</li>
+                        <li>طلاب كليات التربية والرياضيات</li>
+                        <li>المهتمون بالتعليم الرقمي</li>
+                    </ul>
+                    <ul class="content-es" style="text-align: left; margin-top: 1rem; color: var(--text-dark);">
+                        <li>Profesores de matemáticas de todos los niveles</li>
+                        <li>Entrenadores en tecnología educativa</li>
+                        <li>Estudiantes de educación y matemáticas</li>
+                        <li>Interesados en educación digital</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Installation Section -->
+    <section id="installation">
+        <div class="container">
+            <div class="section-title">
+                <h2 class="content-ar active">تثبيت البرامج والأدوات</h2>
+                <h2 class="content-es">Instalación de Programas y Herramientas</h2>
+                <p class="content-ar active">كل ما تحتاجه للبدء في التعليم الرقمي</p>
+                <p class="content-es">Todo lo que necesitas para comenzar en educación digital</p>
+            </div>
+            
+            <div class="installation-grid">
+                <!-- GeoGebra Installation -->
+                <div class="install-card fade-in">
+                    <div class="install-header">
+                        <div class="install-icon">📐</div>
+                        <div>
+                            <h3>GeoGebra</h3>
+                            <p class="content-ar active">بيئة رياضية تفاعلية مجانية</p>
+                            <p class="content-es">Entorno matemático interactivo gratuito</p>
+                        </div>
+                    </div>
+                    <img src="https://ibb.co/TM1v7Jfx" alt="GeoGebra Logo" class="tool-logo" style="width: 100%; height: auto; max-height: 100px; object-fit: contain;">
+                    <div class="install-links">
+                        <a href="https://download.geogebra.org/package/win" class="install-link" target="_blank">
+                            <span class="content-ar active">⬇️ تحميل GeoGebra 5 للويندوز</span>
+                            <span class="content-es">⬇️ Descargar GeoGebra 5 para Windows</span>
+                        </a>
+                        <a href="https://geogebra.github.io/docs/reference/en/GeoGebra_Installation/" class="install-link" target="_blank">
+                            <span class="content-ar active">📚 جميع إصدارات GeoGebra</span>
+                            <span class="content-es">📚 Todas las versiones de GeoGebra</span>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Manim Installation -->
+                <div class="install-card fade-in">
+                    <div class="install-header">
+                        <div class="install-icon">🎬</div>
+                        <div>
+                            <h3>Manim</h3>
+                            <p class="content-ar active">مكتبة بايثون للرسوم المتحركة</p>
+                            <p class="content-es">Biblioteca Python para animaciones</p>
+                        </div>
+                    </div>
+                    <img src="https://ibb.co/5gqgbRjP" alt="Manim Python Logo" class="tool-logo" style="width: 100%; height: auto; max-height: 100px; object-fit: contain;">
+                    <div class="install-links">
+                        <a href="https://docs.manim.community/en/stable/installation.html" class="install-link" target="_blank">
+                            <span class="content-ar active">📖 دليل التثبيت الرسمي</span>
+                            <span class="content-es">📖 Guía de instalación oficial</span>
+                        </a>
+                        <a href="https://youtu.be/NLgdoyHdeGs" class="install-link" target="_blank">
+                            <span class="content-ar active">🎥 فيديو تثبيت بالإنجليزية</span>
+                            <span class="content-es">🎥 Video instalación en inglés</span>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Python Installation -->
+                <div class="install-card fade-in">
+                    <div class="install-header">
+                        <div class="install-icon">🐍</div>
+                        <div>
+                            <h3>Python</h3>
+                            <p class="content-ar active">لغة البرمجة الأساسية لـ Manim</p>
+                            <p class="content-es">Lenguaje de programación para Manim</p>
+                        </div>
+                    </div>
+                    <div class="install-links">
+                        <a href="https://www.python.org/downloads/" class="install-link" target="_blank">
+                            <span class="content-ar active">⬇️ تحميل Python</span>
+                            <span class="content-es">⬇️ Descargar Python</span>
+                        </a>
+                        <a href="https://youtu.be/-GiXvhpMCJE" class="install-link" target="_blank">
+                            <span class="content-ar active">🎥 فيديو تثبيت Manim بالعربية</span>
+                            <span class="content-es">🎥 Video instalación Manim en árabe</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Videos Section -->
+    <section id="videos" style="background: var(--light-color);">
+        <div class="container">
+            <div class="section-title">
+                <h2 class="content-ar active">الفيديوهات التعليمية</h2>
+                <h2 class="content-es">Videos Educativos</h2>
+                <p class="content-ar active">مواد تعليمية متنوعة للاستعداد للمؤتمر</p>
+                <p class="content-es">Material educativo variado para prepararse para la conferencia</p>
+            </div>
+            
+            <div class="video-gallery">
+                <!-- Manim Installation Video -->
+                <div class="video-card fade-in">
+                    <img src="https://img.youtube.com/vi/-GiXvhpMCJE/maxresdefault.jpg" alt="Manim Installation" class="video-thumbnail">
+                    <div class="video-info">
+                        <h4 class="video-title content-ar active">تثبيت Manim خطوة بخطوة</h4>
+                        <h4 class="video-title content-es">Instalación de Manim paso a paso</h4>
+                        <p class="video-description content-ar active">فيديو تعليمي من إعداد الأستاذ بن الدين بويعقوب</p>
+                        <p class="video-description content-es">Video educativo preparado por el Prof. Beneddine Bouyakoub</p>
+                        <div>
+                            <span class="language-badge content-ar active">عربي</span>
+                            <span class="language-badge content-es">Árabe</span>
+                            <span class="language-badge" style="background: #e74c3c; color: white;">🔥 جديد</span>
+                        </div>
+                        <a href="https://youtu.be/-GiXvhpMCJE" class="btn" target="_blank" style="margin-top: 1rem; display: inline-block;">
+                            <span class="content-ar active">شاهد الفيديو</span>
+                            <span class="content-es">Ver Video</span>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Integrals Video -->
+                <div class="video-card fade-in">
+                    <img src="https://img.youtube.com/vi/FRNa1woN4DA/maxresdefault.jpg" alt="Integrals" class="video-thumbnail">
+                    <div class="video-info">
+                        <h4 class="video-title content-ar active">التكاملات الأربعة في الرياضيات</h4>
+                        <h4 class="video-title content-es">Las Cuatro Integrales en Matemáticas</h4>
+                        <p class="video-description content-ar active">شرح مفصل لأنواع التكاملات باستخدام الرسوم المتحركة</p>
+                        <p class="video-description content-es">Explicación detallada de tipos de integrales usando animaciones</p>
+                        <div>
+                            <span class="language-badge content-ar active">عربي</span>
+                            <span class="language-badge content-es">Árabe</span>
+                            <span class="language-badge" style="background: #2980b9; color: white;">📚 تعليمي</span>
+                        </div>
+                        <a href="https://youtu.be/FRNa1woN4DA" class="btn" target="_blank" style="margin-top: 1rem; display: inline-block;">
+                            <span class="content-ar active">شاهد الفيديو</span>
+                            <span class="content-es">Ver Video</span>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Radians Video -->
+                <div class="video-card fade-in">
+                    <img src="https://img.youtube.com/vi/WDCGCZ6bYRI/maxresdefault.jpg" alt="Radians" class="video-thumbnail">
+                    <div class="video-info">
+                        <h4 class="video-title content-ar active">شرح الراديان في الجيوجيبرا</h4>
+                        <h4 class="video-title content-es">Explicación del Radián en GeoGebra</h4>
+                        <p class="video-description content-ar active">تعلم مفهوم الراديان بطريقة تفاعلية باستخدام GeoGebra</p>
+                        <p class="video-description content-es">Aprende el concepto del radián interactivamente usando GeoGebra</p>
+                        <div>
+                            <span class="language-badge content-ar active">عربي</span>
+                            <span class="language-badge content-es">Árabe</span>
+                            <span class="language-badge" style="background: #27ae60; color: white;">📐 هندسة</span>
+                        </div>
+                        <a href="https://youtu.be/WDCGCZ6bYRI" class="btn" target="_blank" style="margin-top: 1rem; display: inline-block;">
+                            <span class="content-ar active">شاهد الفيديو</span>
+                            <span class="content-es">Ver Video</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Books Section -->
+    <section id="books">
+        <div class="container">
+            <div class="section-title">
+                <h2 class="content-ar active">الإصدارات العلمية</h2>
+                <h2 class="content-es">Publicaciones Científicas</h2>
+                <p class="content-ar active">كتب ومؤلفات المحاضرين</p>
+                <p class="content-es">Libros y publicaciones de los ponentes</p>
+            </div>
+            
+            <div class="book-gallery">
+                <!-- Book 1 -->
+                <div class="book-card fade-in">
+                    <img src="https://ibb.co/C3F2dmFj" alt="GeoGebra Book" class="book-cover">
+                    <h3 class="content-ar active">الإنشاء بالجيوجيبرا</h3>
+                    <h3 class="content-es">Construcción con GeoGebra</h3>
+                    <p class="content-ar active"><strong>المؤلف:</strong> الأستاذ بن الدين بويعقوب</p>
+                    <p class="content-es"><strong>Autor:</strong> Prof. Beneddine Bouyakoub</p>
+                    <p class="content-ar active">دليل شامل للإنشاءات الهندسية باستخدام GeoGebra</p>
+                    <p class="content-es">Guía completa para construcciones geométricas usando GeoGebra</p>
+                </div>
+                
+                <!-- Book 2 -->
+                <div class="book-card fade-in">
+                    <img src="https://ibb.co/jk4k2HGY" alt="Animated Mathematics" class="book-cover">
+                    <h3 class="content-ar active">لغة الرياضيات المتحركة</h3>
+                    <h3 class="content-es">Lenguaje de Matemáticas Animadas</h3>
+                    <p class="content-ar active"><strong>المؤلف:</strong> الأستاذ بن الدين بويعقوب</p>
+                    <p class="content-es"><strong>Autor:</strong> Prof. Beneddine Bouyakoub</p>
+                    <p class="content-ar active">كتاب قادم عن الرسوم المتحركة في الرياضيات باستخدام Manim</p>
+                    <p class="content-es">Próximo libro sobre animaciones en matemáticas usando Manim</p>
+                </div>
+                
+                <!-- Tool Card -->
+                <div class="book-card fade-in">
+                    <img src="https://ibb.co/5gqgbRjP" alt="Manim and Python" class="book-cover" style="object-fit: contain; background: #f8f9fa;">
+                    <h3 class="content-ar active">مانيم مع بايثون</h3>
+                    <h3 class="content-es">Manim con Python</h3>
+                    <p class="content-ar active"><strong>الأداة:</strong> مكتبة الرسوم المتحركة</p>
+                    <p class="content-es"><strong>Herramienta:</strong> Biblioteca de animaciones</p>
+                    <p class="content-ar active">أداة متقدمة لإنشاء رسوم متحركة رياضية احترافية</p>
+                    <p class="content-es">Herramienta avanzada para crear animaciones matemáticas profesionales</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" style="background: var(--light-color);">
+        <div class="container">
+            <div class="section-title">
+                <h2 class="content-ar active">انضم إلينا</h2>
+                <h2 class="content-es">Únete a Nosotros</h2>
+                <p class="content-ar active">تواصل معنا للمشاركة في المؤتمر</p>
+                <p class="content-es">Contáctanos para participar en la conferencia</p>
+            </div>
+            
+            <!-- Google Meet Button -->
+            <div style="text-align: center; margin-bottom: 3rem;">
+                <a href="https://meet.google.com/uvb-updz-anc" class="meet-btn" target="_blank">
+                    <span class="content-ar active">🎥 انضم إلى المؤتمر عبر Google Meet</span>
+                    <span class="content-es">🎥 Únete a la Conferencia por Google Meet</span>
+                </a>
+            </div>
+            
+            <div class="contact-methods">
+                <!-- Algeria Contact -->
+                <div class="contact-method fade-in">
+                    <h3 class="content-ar active">🇩🇿الجزائر- الأستاذ بن الدين بويعقوب</h3>
+                    <h3 class="content-es">🇩🇿 Prof. Beneddine Bouyakoub - Argelia</h3>
+                    <div style="margin-top: 1rem;">
+                        <p class="content-ar active"><strong>البريد الإلكتروني:</strong></p>
+                        <p class="content-es"><strong>Correo electrónico:</strong></p>
+                        <a href="mailto:inpsbeneddine2@gmail.com">inpsbeneddine2@gmail.com</a>
+                        <br>
+                        <a href="mailto:beneddineinps@gmail.com">beneddineinps@gmail.com</a>
+                    </div>
+                </div>
+                
+                <!-- El Salvador Contact -->
+                <div class="contact-method fade-in">
+                    <h3 class="content-ar active">🇸🇻 الأستاذ إدواردو - السلفادور</h3>
+                    <h3 class="content-es">🇸🇻 Prof. Eduardo - El Salvador</h3>
+                    <div style="margin-top: 1rem;">
+                        <p class="content-ar active"><strong>التواصل:</strong> من خلال المؤتمر</p>
+                        <p class="content-es"><strong>Contacto:</strong> A través de la conferencia</p>
+                        <p class="content-ar active">يمكن التواصل مع الأستاذ إدواردو خلال جلسة المؤتمر أو من خلال المنظمين</p>
+                        <p class="content-es">Se puede contactar al Prof. Eduardo durante la sesión de la conferencia o a través de los organizadores</p>
+                    </div>
+                </div>
+                
+                <!-- General Info -->
+                <div class="contact-method fade-in">
+                    <h3 class="content-ar active">📋 معلومات عامة</h3>
+                    <h3 class="content-es">📋 Información General</h3>
+                    <div style="margin-top: 1rem;">
+                        <p class="content-ar active"><strong>موعد المؤتمر:</strong> الأربعاء القادم</p>
+                        <p class="content-es"><strong>Fecha:</strong> Próximo miércoles</p>
+                        <p class="content-ar active"><strong>الوقت:</strong> 20:00 توقيت الجزائر / 14:00 توقيت السلفادور</p>
+                        <p class="content-es"><strong>Hora:</strong> 20:00 (Argelia) / 14:00 (El Salvador)</p>
+                        <p class="content-ar active"><strong>المدة:</strong> ساعتان</p>
+                        <p class="content-es"><strong>Duración:</strong> 2 horas</p>
+                        <p class="content-ar active"><strong>اللغة:</strong> عربية مع ترجمة فورية</p>
+                        <p class="content-es"><strong>Idioma:</strong> Árabe con traducción simultánea</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p class="content-ar active">&copy; 2024 المؤتمر الدولي: ورشة عمل التعليم الرقمي في الرياضيات. جميع الحقوق محفوظة.</p>
+            <p class="content-es">&copy; 2024 Conferencia Internacional: Taller de Educación Digital en Matemáticas. Todos los derechos reservados.</p>
+            
+            <p class="content-ar active">هذا المؤتمر هو خطوة نحو تعزيز التعاون الدولي في مجال التعليم الرقمي</p>
+            <p class="content-es">Esta conferencia es un paso hacia el fortalecimiento de la cooperación internacional en educación digital</p>
+            
+            <p style="margin-top: 1rem;">
+                <strong class="content-ar active">تنظيم مشترك:</strong>
+                <strong class="content-es">Organización conjunta:</strong>
+                🇩🇿 الجزائر × 🇸🇻 السلفادور
+            </p>
+            
+            <p style="margin-top: 1rem;">
+                <a href="https://meet.google.com/uvb-updz-anc" style="color: #0F9D58; font-weight: bold;" target="_blank">
+                    <span class="content-ar active">🎥 رابط المؤتمر: https://meet.google.com/uvb-updz-anc</span>
+                    <span class="content-es">🎥 Enlace de la conferencia: https://meet.google.com/uvb-updz-anc</span>
+                </a>
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        // Language Switching Functionality
+        const langButtons = document.querySelectorAll('.lang-btn');
+        const arabicContent = document.querySelectorAll('.content-ar');
+        const spanishContent = document.querySelectorAll('.content-es');
+
+        function switchLanguage(lang) {
+            // Update buttons
+            langButtons.forEach(btn => {
+                btn.classList.remove('active');
+                if (btn.dataset.lang === lang) {
+                    btn.classList.add('active');
+                }
+            });
+
+            // Show/hide content
+            if (lang === 'ar') {
+                arabicContent.forEach(el => el.classList.add('active'));
+                spanishContent.forEach(el => el.classList.remove('active'));
+                document.documentElement.dir = 'rtl';
+                document.documentElement.lang = 'ar';
+            } else {
+                arabicContent.forEach(el => el.classList.remove('active'));
+                spanishContent.forEach(el => el.classList.add('active'));
+                document.documentElement.dir = 'ltr';
+                document.documentElement.lang = 'es';
+            }
+
+            // Save preference
+            localStorage.setItem('preferred-language', lang);
+        }
+
+        // Add event listeners
+        langButtons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                switchLanguage(btn.dataset.lang);
+            });
+        });
+
+        // Check for saved language preference
+        const savedLang = localStorage.getItem('preferred-language') || 'ar';
+        switchLanguage(savedLang);
+
+        // Scroll animations
+        const fadeElements = document.querySelectorAll('.fade-in');
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, {
+            threshold: 0.1
+        });
+
+        fadeElements.forEach(element => {
+            observer.observe(element);
+        });
+
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Mobile navigation toggle
+        const navToggle = document.createElement('button');
+        navToggle.innerHTML = '☰';
+        navToggle.style.cssText = `
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            display: none;
+        `;
+
+        if (window.innerWidth <= 768) {
+            document.querySelector('.nav-container').appendChild(navToggle);
+            const navLinks = document.querySelector('.nav-links');
+            
+            navToggle.addEventListener('click', () => {
+                navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
+                navLinks.style.flexDirection = 'column';
+                navLinks.style.position = 'absolute';
+                navLinks.style.top = '100%';
+                navLinks.style.right = '0';
+                navLinks.style.background = 'var(--primary-color)';
+                navLinks.style.padding = '1rem';
+                navLinks.style.borderRadius = '0 0 0 10px';
+                navLinks.style.zIndex = '1000';
+            });
+
+            // Close menu when clicking outside
+            document.addEventListener('click', (e) => {
+                if (!navToggle.contains(e.target) && !navLinks.contains(e.target)) {
+                    navLinks.style.display = 'none';
+                }
+            });
+        }
+
+        // Update year in footer
+        const currentYear = new Date().getFullYear();
+        document.querySelectorAll('footer p:first-child').forEach(p => {
+            p.innerHTML = p.innerHTML.replace('2024', currentYear);
+        });
+    </script>
+</body>
+</html>
